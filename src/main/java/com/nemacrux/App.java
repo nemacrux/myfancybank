@@ -6,6 +6,9 @@ import org.apache.catalina.Wrapper;
 import org.apache.catalina.startup.Tomcat;
 
 public class App {
+
+    public static final TransactionsService trxService = new TransactionsService();
+
     public static void main( String[] args ) throws LifecycleException {
 
         Tomcat tomcat = new Tomcat();
