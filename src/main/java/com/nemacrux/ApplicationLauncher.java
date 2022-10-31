@@ -1,13 +1,12 @@
 package com.nemacrux;
 
+import com.nemacrux.web.BankServlet;
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.Wrapper;
 import org.apache.catalina.startup.Tomcat;
 
-public class App {
-
-    public static final TransactionsService trxService = new TransactionsService();
+public class ApplicationLauncher {
 
     public static void main( String[] args ) throws LifecycleException {
 

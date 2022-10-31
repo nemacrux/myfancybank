@@ -1,11 +1,14 @@
-package com.nemacrux;
+package com.nemacrux.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.nemacrux.model.Transaction;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
+import static com.nemacrux.context.Application.trxService;
 
 public class BankServlet extends HttpServlet {
     @Override
@@ -23,7 +26,7 @@ public class BankServlet extends HttpServlet {
         }
         else if (request.getRequestURI().equalsIgnoreCase("/transactions")) {
             response.setContentType("application/json; charset=UTF-8");
-            response.getWriter().print(new ObjectMapper().writeValueAsString(App.trxService.findAll()));
+            response.getWriter().print(new ObjectMapper().writeValueAsString(trxService.findAll()));
         }
     }
 
@@ -32,11 +35,10 @@ public class BankServlet extends HttpServlet {
         if (req.getRequestURI().equalsIgnoreCase("/transactions")) {
             resp.setContentType("application/json; charset=UTF-8");
 
-            int trxId = Integer.parseInt(req.getParameter("id"));
             double amount = Double.parseDouble(req.getParameter("amount"));
             String ref = req.getParameter("ref");
 
-            Transaction transaction = App.trxService.create(trxId, amount, ref);
+            Transaction transaction = trxService.create(amount, ref);
 
             String json = new ObjectMapper().writeValueAsString(transaction);
             resp.getWriter().print(json);
