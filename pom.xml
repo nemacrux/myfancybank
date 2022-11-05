@@ -27,7 +27,11 @@
       <artifactId>jackson-databind</artifactId>
       <version>2.13.4.2</version>
     </dependency>
-
+    <dependency>
+      <groupId>com.fasterxml.jackson.datatype</groupId>
+      <artifactId>jackson-datatype-jsr310</artifactId>
+      <version>2.13.4</version>
+    </dependency>
   </dependencies>
 
   <build>
@@ -49,7 +53,7 @@
               <configuration>
                 <transformers>
                   <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                    <mainClass>com.nemacrux.App</mainClass>
+                    <mainClass>com.nemacrux.ApplicationLauncher</mainClass>
                   </transformer>
                 </transformers>
               </configuration>

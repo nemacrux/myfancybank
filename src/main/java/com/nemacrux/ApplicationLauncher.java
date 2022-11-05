@@ -10,8 +10,10 @@ public class ApplicationLauncher {
 
     public static void main( String[] args ) throws LifecycleException {
 
+        final int port = Integer.parseInt(System.getProperty("server.port", "8080"));
+
         Tomcat tomcat = new Tomcat();
-        tomcat.setPort(8080);
+        tomcat.setPort(port);
         tomcat.getConnector();
 
         Context ctx = tomcat.addContext("", null);
