@@ -1,17 +1,29 @@
 package com.nemacrux.web;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.nemacrux.context.MyFancyBankAppConfiguration;
 import com.nemacrux.model.Transaction;
+import com.nemacrux.service.TransactionsService;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-import static com.nemacrux.context.Application.objectMapper;
-import static com.nemacrux.context.Application.transactionsService;
-
 public class BankServlet extends HttpServlet {
+
+    private TransactionsService transactionsService;
+    private ObjectMapper objectMapper;
+
+    @Override
+    public void init() throws ServletException {
+        AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(MyFancyBankAppConfiguration.class);
+        transactionsService = ctx.getBean(TransactionsService.class);
+        objectMapper = ctx.getBean(ObjectMapper.class);
+    }
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
