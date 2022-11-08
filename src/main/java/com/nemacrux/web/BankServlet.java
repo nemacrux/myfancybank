@@ -21,6 +21,7 @@ public class BankServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(MyFancyBankAppConfiguration.class);
+        ctx.registerShutdownHook();
         transactionsService = ctx.getBean(TransactionsService.class);
         objectMapper = ctx.getBean(ObjectMapper.class);
     }
