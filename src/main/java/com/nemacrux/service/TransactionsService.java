@@ -12,7 +12,6 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
-
 public class TransactionsService {
 
     private final List<Transaction> transactions = new ArrayList<>();

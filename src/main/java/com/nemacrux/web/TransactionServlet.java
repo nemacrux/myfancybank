@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-public class BankServlet extends HttpServlet {
+public class TransactionServlet extends HttpServlet {
 
     private TransactionsService transactionsService;
     private ObjectMapper objectMapper;

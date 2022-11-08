@@ -1,6 +1,6 @@
 package com.nemacrux;
 
-import com.nemacrux.web.BankServlet;
+import com.nemacrux.web.TransactionServlet;
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.Wrapper;
@@ -17,7 +17,7 @@ public class ApplicationLauncher {
         tomcat.getConnector();
 
         Context ctx = tomcat.addContext("", null);
-        Wrapper servlet = Tomcat.addServlet(ctx, "BankServlet", new BankServlet());
+        Wrapper servlet = Tomcat.addServlet(ctx, "BankServlet", new TransactionServlet());
         servlet.setLoadOnStartup(1);
         servlet.addMapping("/*");
 
