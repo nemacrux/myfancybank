@@ -5,6 +5,7 @@ import com.nemacrux.model.Transaction;
 import com.nemacrux.service.TransactionsService;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -22,7 +23,7 @@ public class TransactionController {
     }
 
     @PostMapping("/transactions")
-    public Transaction createTransaction(@RequestBody TransactionDto transactionDto) {
+    public Transaction createTransaction(@RequestBody @Valid TransactionDto transactionDto) {
         return transactionsService.create(transactionDto.amount(), transactionDto.reference());
     }
 

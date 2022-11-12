@@ -1,4 +1,14 @@
 package com.nemacrux.dto;
 
-public record TransactionDto(double amount, String reference) {
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+
+public record TransactionDto(
+        @Min(10)
+        double amount,
+
+        @NotBlank
+        @NotEmpty
+        String reference) {
 }
