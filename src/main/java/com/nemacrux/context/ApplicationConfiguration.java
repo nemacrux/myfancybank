@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @ComponentScan(basePackageClasses = ApplicationLauncher.class)
 @PropertySource(value = "classpath:/application.properties")
 @EnableWebMvc
-public class MyFancyBankAppConfiguration {
+public class ApplicationConfiguration {
 
     @Bean
     public ObjectMapper getObjectMapper() {

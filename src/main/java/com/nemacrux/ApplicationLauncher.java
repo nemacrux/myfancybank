@@ -1,6 +1,6 @@
 package com.nemacrux;
 
-import com.nemacrux.context.MyFancyBankAppConfiguration;
+import com.nemacrux.context.ApplicationConfiguration;
 import org.apache.catalina.Context;
 import org.apache.catalina.LifecycleException;
 import org.apache.catalina.Wrapper;
@@ -34,7 +34,7 @@ public class ApplicationLauncher {
 
     private static WebApplicationContext createWebApplicationContext(ServletContext servletContext) {
         AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();
-        ctx.register(MyFancyBankAppConfiguration.class);
+        ctx.register(ApplicationConfiguration.class);
         ctx.setServletContext(servletContext);
         ctx.refresh();
         ctx.registerShutdownHook();
